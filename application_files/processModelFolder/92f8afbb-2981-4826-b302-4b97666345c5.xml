@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<processModelFolderHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_g-0000e8e2-931f-8000-f975-014d98014d98_496</versionUuid>
+    <processModelFolder>
+        <name>AQ Models</name>
+        <uuid>92f8afbb-2981-4826-b302-4b97666345c5</uuid>
+        <description>Process models folder for the Alex Quick application [Base]</description>
+    </processModelFolder>
+    <roleMap>
+        <role name="ADMIN_OWNER">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e8e2-931f-8000-f90d-011e94011e94_604</groupUuid>
+            </groups>
+        </role>
+        <role name="EDITOR">
+            <users/>
+            <groups/>
+        </role>
+        <role name="EXPLICIT_NONMEMBER">
+            <users/>
+            <groups/>
+        </role>
+        <role name="VIEWER">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e8e2-931f-8000-f90d-011e94011e94_606</groupUuid>
+            </groups>
+        </role>
+        <role name="MANAGER">
+            <users/>
+            <groups/>
+        </role>
+        <role name="INITIATOR">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_g-0000e8e2-931f-8000-f975-014d98014d98_496"/>
+    </history>
+</processModelFolderHaul>

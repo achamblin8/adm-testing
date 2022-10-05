@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tempoReportHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>b40544f9-44f1-45bf-80ef-a3b8f1c38ed9</versionUuid>
+    <tempoReport a:uuid="29b502cd-c806-4b6e-9946-aadfe732a11e" name="alexQuicks">
+        <a:description>Report containing information and metrics on alexQuicks</a:description>
+        <a:uiExpr>=#"_a-0000e8e2-931f-8000-f913-01ef9001ef90_33510"()</a:uiExpr>
+        <a:urlStub>1mbBfw</a:urlStub>
+    </tempoReport>
+    <roleMap>
+        <role name="report_administrator">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e8e2-931f-8000-f90d-011e94011e94_604</groupUuid>
+            </groups>
+        </role>
+        <role name="report_viewer">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e8e2-931f-8000-f90d-011e94011e94_606</groupUuid>
+            </groups>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="b40544f9-44f1-45bf-80ef-a3b8f1c38ed9"/>
+    </history>
+</tempoReportHaul>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e8e2-931f-8000-f913-01ef9001ef90_34176</versionUuid>
+    <report>
+        <name>Copy of Active Processes</name>
+        <uuid>_a-0000e8e2-931f-8000-f913-01ef9001ef90_34171</uuid>
+        <description>All active processes.</description>
+        <parentUuid>_a-0000e8e2-931f-8000-f913-01ef9001ef90_34165</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <reportData>
+            <metadata>
+                <baseFilters>
+                    <outsideNStandardDeviationsFilter>
+                        <apply>false</apply>
+                        <standardDeviationCount>0.0</standardDeviationCount>
+                    </outsideNStandardDeviationsFilter>
+                    <behindScheduleFilter>
+                        <apply>false</apply>
+                    </behindScheduleFilter>
+                    <aheadOfScheduleFilter>
+                        <apply>false</apply>
+                    </aheadOfScheduleFilter>
+                    <lastNDaysFilter>
+                        <apply>false</apply>
+                        <dayCount>0.0</dayCount>
+                    </lastNDaysFilter>
+                    <runningFilter>
+                        <apply>true</apply>
+                    </runningFilter>
+                    <lastNCompletedFilter>
+                        <apply>false</apply>
+                        <completedCount>0</completedCount>
+                    </lastNCompletedFilter>
+                    <completedFilter>
+                        <apply>false</apply>
+                    </completedFilter>
+                </baseFilters>
+                <batchSize>25</batchSize>
+                <columns>
+                    <column>
+                        <drillPath>
+                            <enabled>true</enabled>
+                            <expression>=pp!id</expression>
+                            <linkType>7</linkType>
+                        </drillPath>
+                        <expression>=pp!name</expression>
+                        <formatToken>string</formatToken>
+                        <group>false</group>
+                        <localId>0</localId>
+                        <name>Name</name>
+                        <show>true</show>
+                    </column>
+                    <column>
+                        <drillPath>
+                            <enabled>false</enabled>
+                        </drillPath>
+                        <expression>=pp!priority</expression>
+                        <formatToken>priority</formatToken>
+                        <group>false</group>
+                        <localId>7</localId>
+                        <name>Priority</name>
+                        <show>true</show>
+                    </column>
+                    <column>
+                        <drillPath>
+                            <enabled>false</enabled>
+                        </drillPath>
+                        <expression>=process_status()</expression>
+                        <formatToken>processstatusicons</formatToken>
+                        <group>false</group>
+                        <localId>8</localId>
+                        <name>Status</name>
+                        <show>true</show>
+                    </column>
+                    <column>
+                        <drillPath>
+                            <enabled>false</enabled>
+                        </drillPath>
+                        <expression>=pp!initiator</expression>
+                        <formatToken>users</formatToken>
+                        <group>false</group>
+                        <localId>1</localId>
+                        <name>Started by</name>
+                        <show>true</show>
+                    </column>
+                    <column>
+                        <drillPath>
+                            <enabled>false</enabled>
+                        </drillPath>
+                        <expression>=pp!starttime</expression>
+                        <formatToken>datetime</formatToken>
+                        <group>false</group>
+                        <localId>2</localId>
+                        <name>Start Time</name>
+                        <show>true</show>
+                    </column>
+                    <column>
+                        <drillPath>
+                            <enabled>false</enabled>
+                        </drillPath>
+                        <expression>=running_lag_time()</expression>
+                        <formatToken>durations</formatToken>
+                        <group>false</group>
+                        <localId>3</localId>
+                        <name>Lag Duration</name>
+                        <show>false</show>
+                    </column>
+                    <column>
+                        <drillPath>
+                            <enabled>false</enabled>
+                        </drillPath>
+                        <expression>=running_work_time()</expression>
+                        <formatToken>durations</formatToken>
+                        <group>false</group>
+                        <localId>4</localId>
+                        <name>Work Duration</name>
+                        <show>false</show>
+                    </column>
+                    <column>
+                        <drillPath>
+                            <enabled>false</enabled>
+                        </drillPath>
+                        <expression>=running_completion_time()</expression>
+                        <formatToken>durations</formatToken>
+                        <group>false</group>
+                        <localId>5</localId>
+                        <name>Completion Duration</name>
+                        <show>false</show>
+                    </column>
+                    <column>
+                        <drillPath>
+                            <enabled>false</enabled>
+                        </drillPath>
+                        <expression>=running_lag_time()/running_completion_time()</expression>
+                        <formatToken>percentage</formatToken>
+                        <group>false</group>
+                        <localId>6</localId>
+                        <name>Percent Spent Waiting</name>
+                        <show>false</show>
+                    </column>
+                    <column>
+                        <drillPath>
+                            <enabled>false</enabled>
+                        </drillPath>
+                        <expression>=num_active_tasks()</expression>
+                        <formatToken>number</formatToken>
+                        <group>false</group>
+                        <localId>9</localId>
+                        <name>Active Tasks</name>
+                        <show>true</show>
+                    </column>
+                </columns>
+                <contextType>0</contextType>
+                <quickFilters>
+                    <quickFilter>
+                        <defaultItem>0</defaultItem>
+                        <quickFilterItems>
+                            <quickFilterItem>
+<filters/>
+<name>Any Time</name>
+                            </quickFilterItem>
+                            <quickFilterItem>
+<filters>
+    <lastNDaysFilter>
+        <apply>true</apply>
+        <dayCount>1.0</dayCount>
+    </lastNDaysFilter>
+</filters>
+<name>Last 24 Hours</name>
+                            </quickFilterItem>
+                            <quickFilterItem>
+<filters>
+    <lastNDaysFilter>
+        <apply>true</apply>
+        <dayCount>7.0</dayCount>
+    </lastNDaysFilter>
+</filters>
+<name>Last 7 days</name>
+                            </quickFilterItem>
+                            <quickFilterItem>
+<filters>
+    <lastNDaysFilter>
+        <apply>true</apply>
+        <dayCount>30.0</dayCount>
+    </lastNDaysFilter>
+</filters>
+<name>Last 30 days</name>
+                            </quickFilterItem>
+                            <quickFilterItem>
+<filters>
+    <lastNDaysFilter>
+        <apply>true</apply>
+        <dayCount>365.25</dayCount>
+    </lastNDaysFilter>
+</filters>
+<name>Last 365 days</name>
+                            </quickFilterItem>
+                        </quickFilterItems>
+                        <name>Started</name>
+                        <selectedItem>0</selectedItem>
+                    </quickFilter>
+                </quickFilters>
+                <recursive>false</recursive>
+                <sortColumnLocalId>2</sortColumnLocalId>
+                <sortOrder>1</sortOrder>
+                <startIndex>0</startIndex>
+                <type>1</type>
+            </metadata>
+            <display>
+                <description>All active processes.</description>
+                <displayThresholds>false</displayThresholds>
+                <displayType>0</displayType>
+                <name>Copy of Active Processes</name>
+                <quickFilterDisplay>1</quickFilterDisplay>
+                <showLegend>true</showLegend>
+                <showQuickFiltersInToolbar>true</showQuickFiltersInToolbar>
+                <supportedTypes>
+                    <supportedType>0</supportedType>
+                    <supportedType>1</supportedType>
+                    <supportedType>2</supportedType>
+                    <supportedType>3</supportedType>
+                </supportedTypes>
+                <thresholdColumnLocalId>6</thresholdColumnLocalId>
+                <thresholdColumnName>Performance</thresholdColumnName>
+                <thresholds>
+                    <threshold>
+                        <iconUuid>SYSTEM_DOC_PERFORMANCE_INDICATOR_GREEN</iconUuid>
+                        <defaultIconName>indicatorgreen</defaultIconName>
+                        <label>Quickly Addressed</label>
+                        <upperBound>0.2</upperBound>
+                    </threshold>
+                    <threshold>
+                        <iconUuid>SYSTEM_DOC_PERFORMANCE_INDICATOR_YELLOW</iconUuid>
+                        <defaultIconName>indicatoryellow</defaultIconName>
+                        <label>Addressed In Time</label>
+                        <upperBound>0.5</upperBound>
+                    </threshold>
+                    <threshold>
+                        <iconUuid>SYSTEM_DOC_PERFORMANCE_INDICATOR_RED</iconUuid>
+                        <defaultIconName>indicatorred</defaultIconName>
+                        <label>Addressed Late</label>
+                    </threshold>
+                </thresholds>
+                <useCustomToolbar>false</useCustomToolbar>
+                <useDefaultBarGraphXML>true</useDefaultBarGraphXML>
+                <useDefaultLineGraphXML>true</useDefaultLineGraphXML>
+                <useDefaultPieGraphXML>true</useDefaultPieGraphXML>
+            </display>
+            <modified>false</modified>
+            <showDisplayOptions>false</showDisplayOptions>
+            <showTitle>false</showTitle>
+            <showToolbar>false</showToolbar>
+            <view>0</view>
+            <writeAccess>false</writeAccess>
+        </reportData>
+    </report>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e8e2-931f-8000-f913-01ef9001ef90_34176"/>
+    </history>
+</contentHaul>

@@ -1,0 +1,16 @@
+[
+  {
+    "objectUuid": "3a3391d5-4508-42ec-9cd7-7f808f90a022",
+    "designGuidanceKey": "sysrule.designGuidance.processModel.activityChainedMniNode",
+    "dismissed": true,
+    "instanceCount": 2,
+    "objectTypeName": "{http://www.appian.com/ae/types/2009}ProcessModel"
+  },
+  {
+    "objectUuid": "cb563b90-94f8-4d72-8a89-3e32e7e24e72",
+    "designGuidanceKey": "sysrule.designGuidance.processModel.activityChainedMniNode",
+    "dismissed": true,
+    "instanceCount": 2,
+    "objectTypeName": "{http://www.appian.com/ae/types/2009}ProcessModel"
+  }
+]

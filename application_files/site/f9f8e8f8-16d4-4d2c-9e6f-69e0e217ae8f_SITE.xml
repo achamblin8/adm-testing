@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siteHaul xmlns:a="http://www.appian.com/ae/types/2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <versionUuid>a6190dda-49bb-45fa-a4d3-4f2b4193a6f8</versionUuid>
+  <site a:uuid="f9f8e8f8-16d4-4d2c-9e6f-69e0e217ae8f_SITE" name="Alex Quick">
+    <description/>
+    <urlStub>alex-quick</urlStub>
+    <page>
+      <staticName>alexQuicks</staticName>
+      <description/>
+      <urlStub>records</urlStub>
+      <uiObject a:uuid="152cec27-269e-45bf-836c-3e88890eab82" xsi:type="a:RecordType"/>
+      <iconId>f2df</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>STANDARD</pageWidth>
+    </page>
+    <page>
+      <staticName>Trends</staticName>
+      <description/>
+      <urlStub>trends</urlStub>
+      <uiObject a:uuid="29b502cd-c806-4b6e-9946-aadfe732a11e" xsi:type="a:TempoReport"/>
+      <iconId>f080</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>WIDE</pageWidth>
+    </page>
+    <page>
+      <staticName>My Tasks</staticName>
+      <description/>
+      <urlStub>tasks</urlStub>
+      <uiObject a:uuid="080d37c7-47da-49da-879c-3b406da7856b" xsi:type="a:TaskReport"/>
+      <iconId>f046</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>WIDE</pageWidth>
+    </page>
+    <visibility>268435456</visibility>
+    <faviconRef a:uuid="SYSTEM_CONTENT_SITES_DEFAULT_FAVICON" xsi:type="a:CollaborationDocument"/>
+    <logoRef a:uuid="SYSTEM_CONTENT_SITES_DEFAULT_LOGO" xsi:type="a:CollaborationDocument"/>
+    <showName>false</showName>
+    <tempoLinkVisibility>HIDDEN</tempoLinkVisibility>
+    <showRecordNews>false</showRecordNews>
+    <tasksInSitesVisibility>HIDDEN</tasksInSitesVisibility>
+    <buttonShape>SQUARED</buttonShape>
+    <navigationBarStyle>STYLE1</navigationBarStyle>
+    <inputShape>SQUARED</inputShape>
+    <isSystem>false</isSystem>
+    <displayName>Alex Quick</displayName>
+    <isStaticDisplayName>true</isStaticDisplayName>
+  </site>
+  <roleMap>
+    <role name="site_administrator">
+      <users/>
+      <groups>
+        <groupUuid>_e-0000e8e2-931f-8000-f90d-011e94011e94_604</groupUuid>
+      </groups>
+    </role>
+    <role name="site_viewer">
+      <users/>
+      <groups>
+        <groupUuid>_e-0000e8e2-931f-8000-f90d-011e94011e94_606</groupUuid>
+      </groups>
+    </role>
+  </roleMap>
+  <history>
+    <historyInfo versionUuid="a6190dda-49bb-45fa-a4d3-4f2b4193a6f8"/>
+  </history>
+</siteHaul>

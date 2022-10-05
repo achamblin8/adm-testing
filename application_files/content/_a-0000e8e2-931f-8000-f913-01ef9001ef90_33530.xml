@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e8e2-931f-8000-f913-01ef9001ef90_33995</versionUuid>
+    <rule>
+        <name>AQ_TaskGridColumn</name>
+        <uuid>_a-0000e8e2-931f-8000-f913-01ef9001ef90_33530</uuid>
+        <description>Component interface that generates a single column dynamically for use in task grids on alexQuick records and in task reports. Dynamic generation lets changes to the process report be reflected instantly without needing to reconfigure the SAIL interface. [Tasking] [Records]</description>
+        <parentUuid>cdd559ca-e1b4-435a-97b7-d329f461ba5e</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#"SYSTEM_SYSRULES_gridColumn"(
+  label: ri!columnConfig.label,
+  sortField: ri!columnConfig.field,
+  showWhen: if(
+    ri!columnConfig.configuredFormatting = "TASK_STATUS",
+    count(index(ri!currentPage.data, ri!columnConfig.field, {})) &gt; 0,
+    and(
+      /* The column for record ID will not appear if we're filtering by record. */
+      not(and(ri!columnConfig.field = "c7", ri!filterByRecord)),
+
+      /* In addition, the column for Assignee will not appear if we're viewing My Tasks, *
+       * and the column for From will not appear if we're filtering by sender.           */
+      not(
+        and(
+          ri!columnConfig.label = if(
+            ri!toOrFrom = "my tasks",
+            "Assignee",
+            "From"
+          ),
+          not(ri!filterByRecord)
+        )
+      )
+    )
+  ),
+  value: a!localVariables(
+    local!columnValue: fv!row[ri!columnConfig.field],
+    if(
+      ri!columnConfig.configuredFormatting = "TASK_STATUS",
+      /* Show an image column for task status */
+      #"SYSTEM_SYSRULES_imageField_v1"(
+        images: {
+          #"_a-0000e8e2-931f-8000-f913-01ef9001ef90_33450"(local!columnValue)
+        }
+      ),
+      if(
+        ri!columnConfig.configuredDrilldown = "USER_PROFILE",
+        #"SYSTEM_SYSRULES_linkField"(
+          links: {
+            #"SYSTEM_SYSRULES_userRecordLink"(
+              label: #"3a20ad86-a30a-4c2a-9149-9c56f9424782_FORMATNAME"(local!columnValue),
+              user: local!columnValue
+            )
+          }
+        ),
+        if(
+          ri!columnConfig.configuredFormatting = "DATE_TIME",
+          #"_a-0000e8e2-931f-8000-f913-01ef9001ef90_33430"(local!columnValue),
+          if(
+            /* For the field that holds the record IDs, put record links on the record names. */
+            ri!columnConfig.field = "c7",
+            #"SYSTEM_SYSRULES_linkField"(
+              links: {
+                #"SYSTEM_SYSRULES_recordLink"(
+                  label: index(ri!recordNames.title, wherecontains(tointeger(local!columnValue), tointeger(ri!recordNames.id)), null),
+                  recordType: #"urn:appian:record-type:v1:152cec27-269e-45bf-836c-3e88890eab82",
+                  identifier: local!columnValue
+                )
+              }
+            ),
+            if(
+              /* Link from the task descriptions to the tasks themselves. Only add a link if */
+              /* the current user is the assignee.                                           */
+              and(
+                ri!columnConfig.configuredDrilldown = "TASK_DETAILS",
+                ri!columnConfig.field = "c9",
+                touser(index(fv!row,"c8",null)) = loggedInUser()
+              ),
+              #"SYSTEM_SYSRULES_linkField"(
+                links: {
+                  #"SYSTEM_SYSRULES_processTaskLink"(
+                    label: local!columnValue,
+                    task: fv!row[ri!columnConfig.drilldownField]
+                  )
+                }
+              ),
+              local!columnValue
+            )
+          )
+        )
+      )
+    )
+  ),
+  align: if(
+    ri!columnConfig.configuredFormatting = "DATE_TIME",
+    "END",
+    "START"
+  ),
+  width: if(
+    ri!columnConfig.configuredFormatting = "TASK_STATUS",
+    "NARROW",
+    "AUTO"
+  )
+)</definition>
+        <namedTypedValue>
+            <name>columnConfig</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>recordNames</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>filterByRecord</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>toOrFrom</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>currentPage</name>
+            <type>
+                <name>Variant</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <metadataExpr></metadataExpr>
+        <preferredEditor>interface</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e8e2-931f-8000-f913-01ef9001ef90_33995"/>
+    </history>
+</contentHaul>

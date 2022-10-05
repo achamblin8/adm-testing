@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tempoFeedHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>f0bca5b5-b0c3-4caf-86dd-1176c6892599</versionUuid>
+    <tempoFeed>
+        <uuid>46f3ce06-36b5-469e-9daf-00d825f78fe7</uuid>
+        <name>Alex Quick</name>
+        <description>Feed for updates about alexQuicks</description>
+        <showInCatalog>true</showInCatalog>
+        <systemFeed>false</systemFeed>
+    </tempoFeed>
+    <roleMap>
+        <role name="administrator">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e8e2-931f-8000-f90d-011e94011e94_604</groupUuid>
+            </groups>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="f0bca5b5-b0c3-4caf-86dd-1176c6892599"/>
+    </history>
+</tempoFeedHaul>
